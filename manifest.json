@@ -1,7 +1,7 @@
 {
   "name": "KrzyśFit",
   "short_name": "KrzyśFit",
-  "start_url": "/index.html",
+  "start_url": "/KrzysFit/index.html",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#0A2540",
