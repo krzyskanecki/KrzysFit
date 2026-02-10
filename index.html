@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KrzyśFit</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#0A2540" />
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <img src="assets/icons/icon-96.png" alt="Logo" class="logo" />
+    <h1>KrzyśFit</h1>
+  </header>
+  <nav class="tabs">
+    <button data-tab="today" class="active">Heute</button>
+    <button data-tab="plan">Plan</button>
+    <button data-tab="stats">Statistik</button>
+    <button data-tab="settings">Einstellungen</button>
+  </nav>
+
+  <main>
+    <!-- Heute / Woche -->
+    <section id="today" class="tab active">
+      <h2>Diese Woche</h2>
+      <div id="weekSummary" class="week-summary"></div>
+      <div class="today-actions">
+        <label for="todayWorkout">Heutiges Workout:</label>
+        <select id="todayWorkout">
+          <option value="A">Training A – Kraftausdauer</option>
+          <option value="B">Training B – Cardio + Core (Low Impact)</option>
+          <option value="C">Training C – Kraft</option>
+        </select>
+        <button id="startWorkout">Workout öffnen</button>
+        <label class="done-toggle"><input type="checkbox" id="markDone"> ✔️ Training erledigt</label>
+      </div>
+      <div id="todayWorkoutContainer"></div>
+    </section>
+
+    <!-- Plan -->
+    <section id="plan" class="tab">
+      <h2>Plan & Übungen</h2>
+      <div class="plan-grid">
+        <article class="plan-card" data-workout="A">
+          <h3>Training A – Kraftausdauer</h3>
+          <ul>
+            <li>Kettlebell Deadlift</li>
+            <li>Band Rudern</li>
+            <li>Kettlebell Goblet Squat</li>
+            <li>Hip Hinge / Good Morning</li>
+            <li>Kettlebell Floor Press</li>
+            <li>Core: Dead Bug / Plank</li>
+          </ul>
+          <button class="open-workout" data-workout="A">Öffnen</button>
+        </article>
+        <article class="plan-card" data-workout="B">
+          <h3>Training B – Cardio + Core (Low Impact)</h3>
+          <ul>
+            <li>Step‑Back Taps + Band Row</li>
+            <li>Kettlebell Swing (oder schneller Hip Hinge)</li>
+            <li>Shadow Boxing</li>
+            <li>Kettlebell March Hold</li>
+            <li>Russian Twist</li>
+            <li>Bird Dog</li>
+          </ul>
+          <button class="open-workout" data-workout="B">Öffnen</button>
+        </article>
+        <article class="plan-card" data-workout="C">
+          <h3>Training C – Kraft</h3>
+          <ul>
+            <li>Kettlebell Split Squat</li>
+            <li>Band Chest Press</li>
+            <li>Kettlebell Row einarmig</li>
+            <li>Hip Thrust / Glute Bridge</li>
+            <li>Pallof Press (Band)</li>
+            <li>Farmer Walk</li>
+          </ul>
+          <button class="open-workout" data-workout="C">Öffnen</button>
+        </article>
+      </div>
+      <div id="exerciseDetails"></div>
+    </section>
+
+    <!-- Statistik -->
+    <section id="stats" class="tab">
+      <h2>Statistik</h2>
+      <div class="stats-cards">
+        <div class="stat">
+          <h3>Trainingstage (diese Woche)</h3>
+          <div id="statDays">0 / 3</div>
+        </div>
+        <div class="stat">
+          <h3>Trainingsvolumen (∑ S×W×G)</h3>
+          <div id="statVolume">0</div>
+        </div>
+        <div class="stat">
+          <h3>Körpergewicht (heute)</h3>
+          <div>
+            <input type="number" id="bodyweight" step="0.1" placeholder="kg"> 
+            <button id="saveWeight">Speichern</button>
+          </div>
+          <small id="lastWeight"></small>
+        </div>
+      </div>
+      <canvas id="chartVolume" width="360" height="180" aria-label="Volumen Verlauf"></canvas>
+    </section>
+
+    <!-- Einstellungen -->
+    <section id="settings" class="tab">
+      <h2>Einstellungen</h2>
+      <label>Wochenziel (Workouts/Woche): 
+        <input type="number" id="weeklyGoal" min="1" max="7" value="3">
+      </label>
+      <button id="saveSettings">Speichern</button>
+      <button id="exportData">Daten exportieren</button>
+      <input type="file" id="importFile" accept="application/json" />
+      <button id="importData">Daten importieren</button>
+    </section>
+  </main>
+
+  <footer class="app-footer">© KrzyśFit</footer>
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js');
+      });
+    }
+  </script>
+</body>
+</html>

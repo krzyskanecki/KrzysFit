@@ -1,0 +1,32 @@
+:root{
+  --bg:#000000; --fg:#E6E9EE; --primary:#0A2540; --accent:#0f62fe; --card:#0b0b0f; --muted:#9aa3ad;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,sans-serif}
+.app-header{display:flex;gap:.8rem;align-items:center;padding:.8rem 1rem;background:linear-gradient(90deg,var(--primary),#000)}
+.logo{width:28px;height:28px;border-radius:6px}
+.tabs{display:flex;gap:.5rem;padding:.5rem 1rem;background:#07070a;position:sticky;top:0;z-index:5}
+.tabs button{background:#0d0f14;color:var(--fg);border:1px solid #131722;padding:.5rem .8rem;border-radius:10px;cursor:pointer}
+.tabs button.active{background:var(--primary)}
+main{padding:1rem}
+.week-summary{display:grid;grid-template-columns:repeat(7,1fr);gap:.6rem}
+.day-card{background:var(--card);border:1px solid #151a28;border-radius:10px;padding:.6rem;text-align:center}
+.day-card .date{font-size:.9rem;color:var(--muted)}
+.day-card .done{margin-top:.3rem}
+.today-actions{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin:1rem 0}
+.plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+.plan-card{background:var(--card);border:1px solid #151a28;border-radius:12px;padding:1rem}
+.plan-card h3{margin-top:0}
+.plan-card ul{padding-left:1.2rem}
+.plan-card button{background:var(--accent);border:0;color:white;padding:.5rem .9rem;border-radius:8px;cursor:pointer}
+.exercise{background:#0b0f15;border:1px solid #151a28;border-radius:10px;padding:.8rem;margin:.6rem 0}
+.exercise h4{margin:.2rem 0 .6rem}
+.exercise .mini{color:var(--muted);font-size:.9rem}
+.exercise form{display:grid;grid-template-columns:repeat(6,1fr);gap:.4rem;align-items:end}
+.exercise form input{width:100%;padding:.35rem;background:#0e121a;border:1px solid #1b2235;border-radius:8px;color:var(--fg)}
+.exercise form button{grid-column:span 6;background:#1f8a70;border:0;color:#fff;padding:.45rem;border-radius:8px;cursor:pointer}
+.stats-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.stat{background:var(--card);border:1px solid #151a28;border-radius:12px;padding:1rem}
+.app-footer{padding:1rem;text-align:center;color:#98a2ad}
+.done-toggle{margin-left:auto}
+canvas{background:#0b0f15;border:1px solid #151a28;border-radius:10px;margin-top:1rem}
+@media (prefers-color-scheme: light){:root{--bg:#f7f9fc;--fg:#0a0d14;--card:#ffffff}}
